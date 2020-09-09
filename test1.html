@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="style1.css">
 </head>
 <body>
-
+<script src="jscript.js"></script>
 <h1>Robert Everhart's CSE4050 Repo</h1>
 <pre title="Ascii art made with http://patorjk.com/software/taag" style="font-size:50%">
 
@@ -38,6 +38,22 @@ W::::::W                           W::::::W               l:::::l
 </pre>
 
 <br>
+
+<form>
+	Calculate Basal Metabolic Rate (BMR)<br>
+	Male:<input type="radio" name = "sex" value = "male">
+	Female:<input type="radio" name = "sex" value = "female"><br>
+	<label for'"height">Height (inches):</label><br>
+	<input type="text" id="height" name="height"><br>
+	<label for'"weight">Weight (lbs):</label><br>
+	<input type="text" id="weight" name="weight"><br> 
+	<label for'"age">Age (years):</label><br>
+	<input type="text" id="age" name="age"><br><br> 
+	<input type="submit" value="Calculate BMR" onclick="calcBMR(sex.value);return false;">
+</form>
+
+<p> Your Basal Metabolic Rate (BMR) is: </p>
+<p id ="bmr"></p>
 
 <div>
 <button onclick="document.location='mailto:007130663@coyote.csusb.edu'">Send email</button>

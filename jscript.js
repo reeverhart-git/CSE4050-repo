@@ -15,5 +15,6 @@ function calcBMR(sex) {
 	}
 	// Display the result in the document.
 	document.getElementById("bmr").innerHTML = result;
+	alert("Your BMR is:" + result);
 }
 
