@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	
-    <title>Testing Some HTML</title>
+    <title>CSE4050 Repo</title>
 	<link rel="stylesheet" href="style1.css">
 
     <!-- update the version number as needed -->
@@ -19,6 +19,10 @@
 -->
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
+		
+	<script src="authScript.js"></script>
+	<script src="healthCalc.js"></script>
+	
 <!--
     <style media="screen">
       body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
@@ -37,73 +41,41 @@
 -->
   </head>
   <body>
-	<script>
-		function calcBMR(sex) {
-			var result = 0;
-			var height = document.getElementById("height").value;
-			var weight = document.getElementById("weight").value;
-			var age = document.getElementById("age").value;
-			// The formula for Basal Metabolic Rate is calculate differently based on sex.
-			if (sex == "male") {
-				result = (66 + (6.3 * weight) + (12.9 * height) - (6.8 * age));
-			} else if (sex == "female") {
-				result = (655 + (4.3 * weight) + (4.7 * height) - (4.7 * age));
-			} else {
-				result = "Error"
-			}
-			// Display the result in the document.
-			document.getElementById("bmr").innerHTML = result;
-			alert("Your BMR is:" + result);
-		}
-	</script>
+  
+	
     <h1>Robert Everhart's CSE4050 Repo</h1>
-<pre title="Ascii art made with http://patorjk.com/software/taag" style="font-size:50%">
-
-																																				   
-																																				   
-WWWWWWWW                           WWWWWWWW               lllllll                                                                                  
-W::::::W                           W::::::W               l:::::l                                                                                  
-W::::::W                           W::::::W               l:::::l                                                                                  
-W::::::W                           W::::::W               l:::::l                                                                                  
- W:::::W           WWWWW           W:::::W eeeeeeeeeeee    l::::l     cccccccccccccccc   ooooooooooo      mmmmmmm    mmmmmmm       eeeeeeeeeeee    
-  W:::::W         W:::::W         W:::::Wee::::::::::::ee  l::::l   cc:::::::::::::::c oo:::::::::::oo  mm:::::::m  m:::::::mm   ee::::::::::::ee  
-   W:::::W       W:::::::W       W:::::We::::::eeeee:::::eel::::l  c:::::::::::::::::co:::::::::::::::om::::::::::mm::::::::::m e::::::eeeee:::::ee
-	W:::::W     W:::::::::W     W:::::We::::::e     e:::::el::::l c:::::::cccccc:::::co:::::ooooo:::::om::::::::::::::::::::::me::::::e     e:::::e
-	 W:::::W   W:::::W:::::W   W:::::W e:::::::eeeee::::::el::::l c::::::c     ccccccco::::o     o::::om:::::mmm::::::mmm:::::me:::::::eeeee::::::e
-	  W:::::W W:::::W W:::::W W:::::W  e:::::::::::::::::e l::::l c:::::c             o::::o     o::::om::::m   m::::m   m::::me:::::::::::::::::e 
-	   W:::::W:::::W   W:::::W:::::W   e::::::eeeeeeeeeee  l::::l c:::::c             o::::o     o::::om::::m   m::::m   m::::me::::::eeeeeeeeeee  
-		W:::::::::W     W:::::::::W    e:::::::e           l::::l c::::::c     ccccccco::::o     o::::om::::m   m::::m   m::::me:::::::e           
-		 W:::::::W       W:::::::W     e::::::::e         l::::::lc:::::::cccccc:::::co:::::ooooo:::::om::::m   m::::m   m::::me::::::::e          
-		  W:::::W         W:::::W       e::::::::eeeeeeee l::::::l c:::::::::::::::::co:::::::::::::::om::::m   m::::m   m::::m e::::::::eeeeeeee  
-		   W:::W           W:::W         ee:::::::::::::e l::::::l  cc:::::::::::::::c oo:::::::::::oo m::::m   m::::m   m::::m  ee:::::::::::::e  
-			WWW             WWW            eeeeeeeeeeeeee llllllll    cccccccccccccccc   ooooooooooo   mmmmmm   mmmmmm   mmmmmm    eeeeeeeeeeeeee  
-																																				   
-																																				   
-																																				   
-																																				   
-																																				   
-																																				   
-																																				   
-
-</pre>
+	<div id="a_msg">loading...</div>
+	
+	<div id="a_logging_in" style="display: none">
+		<div>
+			Email: <input type="text" id="a_email">
+			<input type="submit" id="a_send_link_btn" value="Send Login Link">
+		</div>
+	</div>
+	
+	<div id="a_logged_in" style="display: none">
+		<input type="submit" id="a_logout_btn" value="Logout">
+		HI!!!	
+	</div>
 
 	<br>
+	<div id="BMRdiv">
+		<form>
+			Calculate Basal Metabolic Rate (BMR)<br>
+			Male:<input type="radio" name = "sex" value = "male">
+			Female:<input type="radio" name = "sex" value = "female"><br>
+			<label for'"height">Height (inches):</label><br>
+			<input type="text" id="height" name="height"><br>
+			<label for'"weight">Weight (lbs):</label><br>
+			<input type="text" id="weight" name="weight"><br> 
+			<label for'"age">Age (years):</label><br>
+			<input type="text" id="age" name="age"><br><br> 
+			<input type="submit" value="Calculate BMR" onclick="calcBMR(sex.value);return false;">
+		</form>
 
-<form>
-	Calculate Basal Metabolic Rate (BMR)<br>
-	Male:<input type="radio" name = "sex" value = "male">
-	Female:<input type="radio" name = "sex" value = "female"><br>
-	<label for'"height">Height (inches):</label><br>
-	<input type="text" id="height" name="height"><br>
-	<label for'"weight">Weight (lbs):</label><br>
-	<input type="text" id="weight" name="weight"><br> 
-	<label for'"age">Age (years):</label><br>
-	<input type="text" id="age" name="age"><br><br> 
-	<input type="submit" value="Calculate BMR" onclick="calcBMR(sex.value);return false;">
-</form>
-
-<p> Your Basal Metabolic Rate (BMR) is: </p>
-<p id ="bmr"></p>
+		<p> Your Basal Metabolic Rate (BMR) is: </p>
+		<p id ="bmr"></p>
+	</div>
 
 	<div>
 	<button onclick="document.location='mailto:007130663@coyote.csusb.edu'">Send email</button>
