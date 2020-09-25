@@ -1,59 +1,35 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<title>Testing Some HTML</title>
+<title>Testing Some JSON</title>
 <link rel="stylesheet" href="style1.css">
 </head>
 <body>
-<script src="jscript.js"></script>
 <h1>Robert Everhart's CSE4050 Repo</h1>
-<pre title="Ascii art made with http://patorjk.com/software/taag" style="font-size:50%">
-
-                                                                                                                                                   
-                                                                                                                                                   
-WWWWWWWW                           WWWWWWWW               lllllll                                                                                  
-W::::::W                           W::::::W               l:::::l                                                                                  
-W::::::W                           W::::::W               l:::::l                                                                                  
-W::::::W                           W::::::W               l:::::l                                                                                  
- W:::::W           WWWWW           W:::::W eeeeeeeeeeee    l::::l     cccccccccccccccc   ooooooooooo      mmmmmmm    mmmmmmm       eeeeeeeeeeee    
-  W:::::W         W:::::W         W:::::Wee::::::::::::ee  l::::l   cc:::::::::::::::c oo:::::::::::oo  mm:::::::m  m:::::::mm   ee::::::::::::ee  
-   W:::::W       W:::::::W       W:::::We::::::eeeee:::::eel::::l  c:::::::::::::::::co:::::::::::::::om::::::::::mm::::::::::m e::::::eeeee:::::ee
-    W:::::W     W:::::::::W     W:::::We::::::e     e:::::el::::l c:::::::cccccc:::::co:::::ooooo:::::om::::::::::::::::::::::me::::::e     e:::::e
-     W:::::W   W:::::W:::::W   W:::::W e:::::::eeeee::::::el::::l c::::::c     ccccccco::::o     o::::om:::::mmm::::::mmm:::::me:::::::eeeee::::::e
-      W:::::W W:::::W W:::::W W:::::W  e:::::::::::::::::e l::::l c:::::c             o::::o     o::::om::::m   m::::m   m::::me:::::::::::::::::e 
-       W:::::W:::::W   W:::::W:::::W   e::::::eeeeeeeeeee  l::::l c:::::c             o::::o     o::::om::::m   m::::m   m::::me::::::eeeeeeeeeee  
-        W:::::::::W     W:::::::::W    e:::::::e           l::::l c::::::c     ccccccco::::o     o::::om::::m   m::::m   m::::me:::::::e           
-         W:::::::W       W:::::::W     e::::::::e         l::::::lc:::::::cccccc:::::co:::::ooooo:::::om::::m   m::::m   m::::me::::::::e          
-          W:::::W         W:::::W       e::::::::eeeeeeee l::::::l c:::::::::::::::::co:::::::::::::::om::::m   m::::m   m::::m e::::::::eeeeeeee  
-           W:::W           W:::W         ee:::::::::::::e l::::::l  cc:::::::::::::::c oo:::::::::::oo m::::m   m::::m   m::::m  ee:::::::::::::e  
-            WWW             WWW            eeeeeeeeeeeeee llllllll    cccccccccccccccc   ooooooooooo   mmmmmm   mmmmmm   mmmmmm    eeeeeeeeeeeeee  
-                                                                                                                                                   
-                                                                                                                                                   
-                                                                                                                                                   
-                                                                                                                                                   
-                                                                                                                                                   
-                                                                                                                                                   
-                                                                                                                                                   
-
-</pre>
 
 <br>
 
-<form>
-	Calculate Basal Metabolic Rate (BMR)<br>
-	Male:<input type="radio" name = "sex" value = "male">
-	Female:<input type="radio" name = "sex" value = "female"><br>
-	<label for'"height">Height (inches):</label><br>
-	<input type="text" id="height" name="height"><br>
-	<label for'"weight">Weight (lbs):</label><br>
-	<input type="text" id="weight" name="weight"><br> 
-	<label for'"age">Age (years):</label><br>
-	<input type="text" id="age" name="age"><br><br> 
-	<input type="submit" value="Calculate BMR" onclick="calcBMR(sex.value);return false;">
-</form>
+<p id="hello"></p>
+<p id="vers"></p>
+<p id="term"></p>
 
-<p> Your Basal Metabolic Rate (BMR) is: </p>
-<p id ="bmr"></p>
+<script>
+	var myJSON = {
+					"greeting": "Hello, this is read from JSON!",
+					"version": "0.0.1",
+					"semester": "Fall 2020"
+				};
+				
+	var jsnObject = JSON.stringify(myJSON);
+	localStorage.setItem("mytest", jsnObject);
+	
+	var myText = localStorage.getItem("mytest");
+	var obj = JSON.parse(myText);
+	document.getElementById("hello").innerHTML = obj.greeting
+	document.getElementById("vers").innerHTML = obj.version
+	document.getElementById("term").innerHTML = obj.semester
+</script>
+
 
 <div>
 <button onclick="document.location='mailto:007130663@coyote.csusb.edu'">Send email</button>
