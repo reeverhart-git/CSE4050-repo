@@ -12,6 +12,8 @@
     <script defer src="/__/firebase/7.19.0/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/7.19.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-firestore.js"></script>
 <!--
     <script defer src="/__/firebase/7.19.0/firebase-database.js"></script>
     <script defer src="/__/firebase/7.19.0/firebase-messaging.js"></script>
@@ -77,6 +79,14 @@
 		<p id ="bmr"></p>
 	</div>
 
+
+	<div id="dbload">
+	Testing Database
+	<button id="loadbutton">Load from Database</button>
+	</div>
+
+	
+
 	<div>
 	<button onclick="document.location='mailto:007130663@coyote.csusb.edu'">Send email</button>
 	<button onclick="document.location='https://github.com/reeverhart-git/CSE4050-repo'">Go to Repo</button>
@@ -103,7 +113,42 @@
           console.error(e);
           document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
         }
+		
       });
     </script>
+	
+	
+	<script>
+		// Initialize Cloud Firestore through Firebase
+		firebase.initializeApp({
+			apiKey: "AIzaSyAuDR0r2xTnyQLV0B3RqBwKDQ-xF6Z0byk",
+			authDomain: "cse4050-project.firebaseapp.com",
+			databaseURL: "https://cse4050-project.firebaseio.com",
+			projectId: "cse4050-project",
+			storageBucket: "cse4050-project.appspot.com",
+			messagingSenderId: "497709309774",
+			appId: "1:497709309774:web:5a0427ea9bba3b4494481f",
+			measurementId: "G-WW1ZV5T6P8"
+		});
+		var firestore = firebase.firestore();
+		const docRef = firestore.doc("teststorage/eHxqjWYU38cHWw6unt7P")
+		const outputDiv = document.querySelector("#dbload");
+		const loadbtn = document.querySelector("#loadbutton");
+		
+		
+		loadbtn.addEventListener("click", function() {
+			docRef.get().then(function (doc) {
+				if (doc && doc.exists) {
+					const myData = doc.data();
+					outputDiv.innerText = myData.success;
+				}
+			}).catch(function (error) {
+				console.log("Got an error: ", error);
+			});
+		})
+		
+		
+		
+	</script>
   </body>
 </html>
