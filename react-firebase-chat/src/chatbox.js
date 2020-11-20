@@ -1,9 +1,8 @@
 import { render } from '@testing-library/react';
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import ScrollableFeed from 'react-scrollable-feed'
 import './App.css';
 import firebase from './firebase'
-
 
 
 class Chatbox extends React.Component {
@@ -13,15 +12,26 @@ class Chatbox extends React.Component {
             messages: [],
             newMsgContent: "",
             displayName: "Anonymous"
+            
         };
     }
+
+    
     
     sendMessage = () => {
+        var user = firebase.auth().currentUser;
+        var username = ""
+        if (user.displayName == null){
+          username = user.email
+        }
+        else{
+          username = user.displayName
+        }
         const db = firebase.firestore()
         var myDate = firebase.firestore.Timestamp.fromDate(new Date());
         // Only send a message if its not just whitespace.
         if (this.state.newMsgContent.trim().length > 0){
-          db.collection('messages').add({username: this.state.displayName, content: this.state.newMsgContent, timestamp: myDate})
+          db.collection('messages').add({username: username, content: this.state.newMsgContent, timestamp: myDate})
         }
         // Reset the entry form
         this.setState({newMsgContent: ""})
@@ -61,7 +71,6 @@ class Chatbox extends React.Component {
                     ))}
                 </ScrollableFeed>
                 <div id = "MsgBar" className = "inputbox">
-                  <input className = "inputfield" placeholder = "Anonymous" value={this.state.displayName} onChange={(e) => this.setState({ displayName: e.target.value})}/>
                   <input className = "inputfield" placeholder = "Type a message here!" onKeyDown={this.listener} value={this.state.newMsgContent} onChange={(e) => this.setState({ newMsgContent: e.target.value})}/>
                   <button className = "button" onClick={this.sendMessage}>Send</button>
                 </div>

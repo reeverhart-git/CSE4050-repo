@@ -74,9 +74,10 @@
 	background-color: DimGrey;
 	color: DarkSeaGreen;
 	font-size: 16px;
-	padding: 8px 18px;
+	padding: 2px 18px;
   border-radius: 12px;
-  margin: 2px 4px;
+  margin: 4px 4px;
+  float: right;
 }
 .button:hover {
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
@@ -87,10 +88,10 @@
 }
 
 .inputfield {
-  width: 200px;
-  margin-right: 4px;
-  padding: 4px 4px;
-  border-radius: 8px;
+  width: 480px;
+  margin: 4px 4px;
+  padding: 4px 8px;
+  border-radius: 16px;
 	border-style: solid;
 	border-width: 4px;
   border-color: DimGrey;
@@ -98,7 +99,7 @@
 }
 
 .inputbox {
-  width: auto;
+  width: 600px;
   font-family: "Lucida Console", Courier;
 	color: Black;
 	background-color: DarkSeaGreen;
@@ -130,4 +131,18 @@
 
 .content {
   margin: 10px 2px;
+}
+
+.userdash {
+  width: 620px;
+  font-family: "Lucida Console", Courier;
+	color: Black;
+	background-color: Gainsboro;
+	display: table;
+  margin: 4px 10px;
+	padding: 4px 4px;
+	border-radius: 16px;
+	border-style: solid;
+	border-width: 4px;
+  border-color: DimGrey;
 }
