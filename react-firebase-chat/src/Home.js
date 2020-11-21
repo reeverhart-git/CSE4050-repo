@@ -20,9 +20,11 @@ const Home =  ({ history }) => {
                 <span>Welcome to the Chat Room,<span className = "username">{username}</span>!</span>
                 <button className = "button" onClick={() => firebase.auth().signOut()}>Sign Out</button>
                 <button className = "button" onClick={() => history.push("/profile")}>Edit Profile</button>
+                <Chatbox />
             </div>
+          
             
-            <Chatbox />
+            
         </>
     );
 };

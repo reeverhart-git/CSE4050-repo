@@ -59,21 +59,23 @@ class Chatbox extends React.Component {
         return (
             //list of messages frome firestore
             <>
-            <div className = "scrollwrapper">
-                <ScrollableFeed forceScroll className = "scrollbox">
-                    {this.state.messages.map(message => (
-                        <>
-                        <li key={message.id} className = "message">
-                          <span className = "username">{message.username}</span>: <span className = "content">{message.content}</span>
-                        </li>
-                        <div id="end"  className = "anchor"></div>
-                        </>
-                    ))}
-                </ScrollableFeed>
-                <div id = "MsgBar" className = "inputbox">
-                  <input className = "inputfield" placeholder = "Type a message here!" onKeyDown={this.listener} value={this.state.newMsgContent} onChange={(e) => this.setState({ newMsgContent: e.target.value})}/>
-                  <button className = "button" onClick={this.sendMessage}>Send</button>
-                </div>
+            <div className = "chatbox">
+              <div className = "scrollwrapper">
+                  <ScrollableFeed forceScroll className = "scrollbox">
+                      {this.state.messages.map(message => (
+                          <>
+                          <li key={message.id} className = "message">
+                            <span className = "username">{message.username}</span>:<br></br> <div className = "content">{message.content}</div>
+                          </li>
+                          <div id="end"  className = "anchor"></div>
+                          </>
+                      ))}
+                  </ScrollableFeed>
+                  <div id = "MsgBar" className = "inputbox">
+                    <input className = "inputfield" placeholder = "Type a message here!" onKeyDown={this.listener} value={this.state.newMsgContent} onChange={(e) => this.setState({ newMsgContent: e.target.value})}/>
+                    <button className = "button" onClick={this.sendMessage}>Send</button>
+                  </div>
+              </div>
             </div>
             
             </>
